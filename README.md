@@ -1,30 +1,35 @@
 # Big Data Engineering test
 
-The goal of this test is to impress LINKIT, asses yourself and open a path to a clear and concise technical interview.
+The goal of this test is to evaluate your technical knowledge, asses yourself and open a path to a clear and concise technical interview. The technical interview is not going to be a whiteboard-let's-talk-about-binary-tree-data-sorting but an explanation about the steps you took, why you did so and what was your line of thinking.
 
 Remember, you already went through our screening and first interview; this is the beginning and preparation for a mutual technical conversation.
 
-## Hortonworks Data Platform Sandbox
+## Where to run
 
-Download the latest HDP sandbox and run locally following the instructions [here](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox/) to learn how to setup and everything.
-Do the first tutorial [Learning the Ropes of the HDP Sandbox](https://hortonworks.com/tutorial/learning-the-ropes-of-the-hortonworks-sandbox)
+So, while you are developing I expect that you are capable of setting up a localstack with the tools you select. You will need Spark, HBase, Kafka, Hive and S3/HDFS... feel free to change these components if you want to use different tools.
 
-> This was tested running on a macbook with 16GB of RAM. Check your memory usage or deploy in the cloud if you need more. I recommend allocating at least 8GB for this `vbox`.
+> You must use Scala overall plus Spark and Kafka on the assignments that require it.
 
-Explain you steps and impression in `MyExperience.md`.
+> You do not need to use HBase... you can change to another column-store DB or cloud databases, as long you show you understand the concepts.
 
-## Basic HDFS & Hive on Spark
+> You do not need to use Hive... you can use just Athena on S3, BigTable on GCP or whatever that gets it done and can easily create tables from S3/HDFS.
 
-Build a Scala application using Spark and execute against the Sandbox Hive & SPark to do the following:
-- upload the `.csv` files on <a href="data-spark/">`data-spark`</a> to HDFS
+> I say S3/HDFS because it is up to you to use a cloud object storage or create a Hadoop cluster with HDFS or just use Azure Blob Storage.
+
+> Yup, we use cloud a lot.
+
+## 1. Basic S3/HDFS & Hive on Spark
+
+Build a Scala application using Spark and execute against Hive & Spark to do the following:
+- upload the `.csv` files on <a href="data-spark/">`data-spark`</a> to S3/HDFS
 - create tables on Hive for each `.csv` file
 - output a dataframe on Spark that contains `DRIVERID, NAME, HOURS_LOGGED, MILES_LOGGED` so you can have aggregated information about the driver.
 
 Besides the code on a repo, explain you steps and impression in <a href="`MyExperience.md">`MyExperience.md`</a>.
 
-## HBase
+## 2. HBase
 
-Extend the Scala application above so that it can: 
+Build a Scala application using Spark to do the following: 
 - create a table `dangerous_driving` on HBase
 - load <a href="data-hbase/dangerous-driver.csv">`dangerous-driver.csv`</a>
 - add a 4th element to the table from `extra-driver.csv`
@@ -33,16 +38,17 @@ Extend the Scala application above so that it can:
 
 Same thing here, besides the code on a repo, explain you steps and impression in <a href="`MyExperience.md">`MyExperience.md`</a>.
 
-## Kafka Ingestion
+## 3. Kafka Ingestion
 
-Setup a single Kafka cluster on Docker and create a simple stream with any information you would like to.
-<br> Ingest this `raw` stream into `HDFS` of the Sandbox. How? Choose your preferred tool - Kafka (Streaming or Connect), Spark (Regular or Streaming), Flink, Storm, Flume, NiFi... up to you. Choose if you want to do in batches or real-streaming.
+Setup a Kafka cluster and create a third application that ingests the raw stream from Kafka with the following:
+- Ingest this `raw` stream into S3/HDFS. How? Choose your preferred tool - Kafka (Streaming or Connect), Spark (Regular or Streaming), Flink, Storm, NiFi... up to you. 
+- Choose if you want to do in batches or real-streaming.
 <br> I expect you to have issues on the connectivity and make it work here, so do not worry... put your learnings and explain your steps in <a href="`MyExperience.md">`MyExperience.md`</a>.
 
 ## Extra Points
-Ingest the Kafka stream as a real stream into HBase.
+You get extra points if you (3) using Spark Structured Streaming.
 
 ## Doubts &/Or Submission
 
-Clone this repository to start working on your own prefered git tool. In the end, commit and push your solution and send us the link.
+Clone this repository and create your own version of it. In the end, commit and push your solution and send us your GitHub repo link.
 <br> Feel free to reach out to [Thiago de Faria](mailto:thiago.de.faria@linkit.nl).
