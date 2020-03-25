@@ -110,3 +110,5 @@ ENV/
 **/.DS_Store
 **/model_output
 *.h5
+
+.idea/*
